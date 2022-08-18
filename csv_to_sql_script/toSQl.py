@@ -14,7 +14,7 @@ df = pd.DataFrame(data)
 mydb = mysql.connector.connect(
   host="127.0.0.1",
   user="root",
-  password="Bleutigre8!ChickenBurrito",
+  password="<Password>",
   database="products"
 )
 
