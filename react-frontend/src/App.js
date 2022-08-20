@@ -5,6 +5,7 @@ import { ProductTable } from './components/ProductTable';
 import { Routes, Route} from "react-router-dom";
 
 import { InProgress } from './components/InProgress';
+import { LoginPage } from './components/LoginPage';
 function App() {
 
   return(
@@ -16,7 +17,7 @@ function App() {
 
             <Route path="/inventory" element={<ProductTable />}/>
             <Route path="/home" element={<InProgress/>}/>
-            <Route path="/" element={<InProgress/>}/>
+            <Route path="/" element={<LoginPage/>}/>
 
             
             

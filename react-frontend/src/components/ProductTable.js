@@ -143,22 +143,22 @@ export const ProductTable = () => {
     </div>
     { showUpdate &&(
       <div>
-        <form onSubmit={handleSubmit}>
-          <label>
+        <form onSubmit={handleSubmit} className="mb-3">
+          <label className="mx-3">
             Enter productname:
-            <input type="text" name="productname" value={productname} onChange={e=>{setproductname(e.target.value)}}/>
+            <input type="text" name="productname" value={productname} onChange={e=>{setproductname(e.target.value)}} className="mx-3"/>
           </label>
-          <label>
+          <label className="mx-3">
             Enter Category:
-            <input type="text" name="category" value={category} onChange={e=>{setCateogry(e.target.value)}} />
+            <input type="text" name="category" value={category} onChange={e=>{setCateogry(e.target.value)}} className="mx-3" />
           </label>
-          <label>
+          <label className="mx-3">
             Enter Saleprice:
-            <input type="text" name="saleprice" value={saleprice} onChange={e=>{setSalePrice(e.target.value)}} />
+            <input type="text" name="saleprice" value={saleprice} onChange={e=>{setSalePrice(e.target.value)}} className="mx-3" />
           </label>
 
 
-          <input type="submit" value="Submit" />
+          <input type="submit" value="Update" className="btn btn-warning btn-block" />
 
 
         </form>
