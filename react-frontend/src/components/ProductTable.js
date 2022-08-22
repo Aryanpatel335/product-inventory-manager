@@ -149,9 +149,9 @@ export const ProductTable = () => {
         </label>
       </div>
 
-      <button type="submit" className="btn btn-primary btn-block mb-3">Search</button>
+      <button type="submit" className="btn btn-primary btn-block mb-3 mx-3">Search</button><span>{searchVal && (<button className="btn btn-warning mb-3" onClick={()=>clearSearch()}>Clear</button>)}</span>
     </form>
-      {searchVal && (<button className="btn btn-warning" onClick={()=>clearSearch()}>Clear</button>)}
+      
     </div>
     { showUpdate &&(
       <div>
