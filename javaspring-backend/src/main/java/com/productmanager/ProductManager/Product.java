@@ -7,7 +7,6 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "products")
-
 class Product {
 
     private @Id @GeneratedValue Long id;
