@@ -1,7 +1,18 @@
 import React from 'react'
-import { NavLink} from "react-router-dom";
+import { useDispatch } from 'react-redux';
+import { NavLink, useNavigate} from "react-router-dom";
 import '../components/NavBar.css'
+import { logOutUser } from '../store/authSlice';
+
 export const NavBar = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const handleLogout = async () =>{
+    dispatch(logOutUser());
+    navigate('/');
+  }
+
   return (
     <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
@@ -16,6 +27,13 @@ export const NavBar = () => {
         </li>
         <li class="nav-item">
             <NavLink to="/inventory">Inventory</NavLink>
+        </li>
+        <li class="nav-item">
+          {/* <form onSubmit={handleLogout}>
+            <input type="submit" value="Log Out"/>
+          </form> */}
+          
+          <button className='btn btn-danger' onClick = {() => handleLogout()}>Logout</button>
         </li>
         
         

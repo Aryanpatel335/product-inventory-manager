@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom';
 import { NavBar } from './NavBar'
+import { userLoginStatusSelector } from '../store/authSlice';
+import { useSelector } from 'react-redux';
 
 export const InProgress = () => {
     const [groups, setGroups] = useState([]);
@@ -7,9 +10,14 @@ export const InProgress = () => {
     //for complete order load spinner
     const [completeSpinner, setCompleteSpinner] = useState(false);
     const [clickProductId, setClickedProductId] = useState('');
+    const loginStatus = useSelector(userLoginStatusSelector);
+    const navigate = useNavigate('/');
     useEffect(() => {
+      if(!loginStatus){
+        navigate('/')
+      }
+              
       setLoading(true);
-
       fetch('/products')
         .then(response => response.json())
         .then(body=> {
@@ -19,6 +27,9 @@ export const InProgress = () => {
             //setGroups(body)
             setLoading(false);
         })
+      
+        
+        
 
     }, []);
     

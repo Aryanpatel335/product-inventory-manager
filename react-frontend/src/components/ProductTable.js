@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react'
-
+import { useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { userLoginStatusSelector } from '../store/authSlice';
 
 import { NavBar } from './NavBar';
 export const ProductTable = () => {
+    const navigate = useNavigate();
     const [dataBaseProducts, setDataBaseProducts] = useState([]);
     const [searchProducts, setSearchProducts] = useState([]);
     const [loading, setLoading] = useState(false);
@@ -15,7 +18,16 @@ export const ProductTable = () => {
     //for ordering load affect
     const [orderload, setOrderLoad] = useState(false);
     const [clickProductId, setClickedProductId] = useState('');
+
+    const loginStatus = useSelector(userLoginStatusSelector);
+
+
+    
     useEffect(() => {
+      if (!loginStatus){
+        navigate('/')
+      }
+
       setLoading(true);
 
       fetch('/products')

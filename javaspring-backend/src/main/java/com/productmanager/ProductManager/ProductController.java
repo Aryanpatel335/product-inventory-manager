@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-class ProductController {
+public class ProductController{
     private final ProductRepository productRepository;
     private final ProductModelAssembler assembler;
 

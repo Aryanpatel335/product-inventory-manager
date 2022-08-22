@@ -13,13 +13,14 @@ public class User {
 
     private String Googlesubid;
     private String Username;
+    private String Email;
     public User(){}
 
-    User(Long id, String Googlesubid, String Username){
+    User(Long id, String Googlesubid, String Username, String Email){
         this.id = id;
         this.Googlesubid= Googlesubid;
         this.Username = Username;
-
+        this.Email = Email;
     }
 
 
@@ -47,6 +48,11 @@ public class User {
     public void setUsername(String username){
         this.Username = username;
     }
+
+    public String getEmail() {return Email;}
+
+    public void setEmail(String email){this.Email= email;}
+
 
 
 
