@@ -134,7 +134,7 @@ export const ProductTable = () => {
               <input
                 type="text"
                 id="productname"
-                class="form-control"
+                className="form-control"
                 value={searchVal}
                 onChange={(e) => {
                   setSearchVal(e.target.value);
@@ -233,19 +233,26 @@ export const ProductTable = () => {
               <td>{g.status}</td>
               <td>
                 {orderload && g.id === clickProductId ? (
-                  <div class="spinner-border text-primary" role="status"></div>
+                  <div
+                    className="spinner-border text-primary"
+                    role="status"
+                  ></div>
                 ) : (
                   <>
                     {g.status !== "ORDER_IN_PROGRESS" && (
                       <button
                         id="order"
-                        class="bg-success"
+                        className="btn btn-warning mx-2"
                         onClick={(e) => handleClick(e, g)}
                       >
                         Order
                       </button>
                     )}
-                    <button id="update" onClick={(e) => handleClick(e, g)}>
+                    <button
+                      id="update"
+                      onClick={(e) => handleClick(e, g)}
+                      className="btn btn-dark"
+                    >
                       Update
                     </button>
                   </>

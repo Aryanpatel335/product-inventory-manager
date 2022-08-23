@@ -61,7 +61,7 @@ export const InProgress = () => {
   return (
     <div className="App">
       <NavBar />
-      <h1>In Order</h1>
+      <h1 className="mb-4">Orders in Progress</h1>
 
       <table className="table">
         <thead>
@@ -88,12 +88,16 @@ export const InProgress = () => {
               {/* <td><button id="Complete" class="bg-success" onClick={(e)=>handleClick(e,g) }>Complete</button> */}
               <td>
                 {completeSpinner && g.id === clickProductId ? (
-                  <div class="spinner-border text-primary" role="status"></div>
+                  <div
+                    className="spinner-border text-primary"
+                    role="status"
+                  ></div>
                 ) : (
                   <>
                     <button
                       id="Complete"
-                      class="bg-success"
+                      className="btn"
+                      style={{ "background-color": "#51b84d" }}
                       onClick={(e) => handleClick(e, g)}
                     >
                       Complete
@@ -105,7 +109,9 @@ export const InProgress = () => {
           ))}
         </tbody>
       </table>
-      {groups.length === 0 && <h4 class="text-warning">No Orders in Place</h4>}
+      {groups.length === 0 && (
+        <h4 class="text-warning">No Orders in Progress</h4>
+      )}
       {loading && <div class="spinner-border text-primary" role="status"></div>}
     </div>
   );
