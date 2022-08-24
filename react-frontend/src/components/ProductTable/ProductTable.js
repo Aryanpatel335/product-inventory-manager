@@ -208,7 +208,9 @@ export const ProductTable = () => {
         </div>
       )}
 
-      {loading && <div class="spinner-border text-primary" role="status"></div>}
+      {loading && (
+        <div className="spinner-border text-primary" role="status"></div>
+      )}
       <table className="table">
         <thead>
           <tr>

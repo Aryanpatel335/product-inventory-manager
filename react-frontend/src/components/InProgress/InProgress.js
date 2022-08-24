@@ -85,7 +85,7 @@ export const InProgress = () => {
 
               <td>{g.saleprice}</td>
               <td>{g.status}</td>
-              {/* <td><button id="Complete" class="bg-success" onClick={(e)=>handleClick(e,g) }>Complete</button> */}
+
               <td>
                 {completeSpinner && g.id === clickProductId ? (
                   <div
@@ -110,9 +110,11 @@ export const InProgress = () => {
         </tbody>
       </table>
       {groups.length === 0 && (
-        <h4 class="text-warning">No Orders in Progress</h4>
+        <h4 className="text-warning">No Orders in Progress</h4>
       )}
-      {loading && <div class="spinner-border text-primary" role="status"></div>}
+      {loading && (
+        <div className="spinner-border text-primary" role="status"></div>
+      )}
     </div>
   );
 };

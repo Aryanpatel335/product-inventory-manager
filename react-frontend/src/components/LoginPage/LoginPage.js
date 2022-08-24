@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
@@ -9,7 +9,7 @@ import "../LoginPage/LoginPage.css";
 export const LoginPage = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
+  const [failedLogin, setFailedLogin] = useState(false);
   const googleSuccess = async (res) => {
     const data = jwt_decode(res.credential);
 
@@ -32,6 +32,7 @@ export const LoginPage = () => {
           if (body === true) {
             dispatch(googleSignInUser(data, navigate));
           } else {
+            setFailedLogin(true);
             navigate("/");
           }
         });
@@ -45,51 +46,66 @@ export const LoginPage = () => {
   };
 
   return (
-    <div className="container">
-      <section className="row">
-        <div className="col-8">
-          <div className="px-4 py-5 px-md-5 text-center text-lg-start">
-            <div className="container">
-              <div className="row gx-lg-5 align-items-center">
-                <div className="col-lg-12 mb-5 mb-lg-0">
-                  <h1 className="my-5 display-2 fw-bold">
-                    Product Inventory Manager <br />
-                    <span className="text-success display-5 fw-normal fst-italic">
-                      <u>for your business</u>
-                    </span>
-                  </h1>
-                  <p>
-                    This web app allows users to interact with company database
-                    of over 3000 products. It allows them to add orders for
-                    products low in stock as well as complete the orders once
-                    product is back in stock. Additionally the user can edit the
-                    product details which will also be updated in the connected
-                    database. This application allows access to only those in
-                    the user database so that product information can not be
-                    altered by everyone.
-                  </p>
+    <>
+      {failedLogin && (
+        <div
+          class="alert alert-danger alert-dismissible fade show"
+          role="alert"
+        >
+          You are not authorized to access this website's content! Please login
+          with an authorized email
+          <button
+            className="float-end btn-close"
+            onClick={() => setFailedLogin(false)}
+          ></button>
+        </div>
+      )}
+      <div className="container">
+        <section className="row">
+          <div className="col-8">
+            <div className="px-4 py-5 px-md-5 text-center text-lg-start">
+              <div className="container">
+                <div className="row gx-lg-5 align-items-center">
+                  <div className="col-lg-12 mb-5 mb-lg-0">
+                    <h1 className="my-5 display-2 fw-bold">
+                      Product Inventory Manager <br />
+                      <span className="text-success display-5 fw-normal fst-italic">
+                        <u>for your business</u>
+                      </span>
+                    </h1>
+                    <p>
+                      This web app allows users to interact with company
+                      database of over 3000 products. It allows them to add
+                      orders for products low in stock as well as complete the
+                      orders once product is back in stock. Additionally the
+                      user can edit the product details which will also be
+                      updated in the connected database. This application allows
+                      access to only those in the user database so that product
+                      information can not be altered by everyone.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="col-4 my-auto ">
-          <div className="card text-center ">
-            <div class="card-header fw-bold">
-              <h4>Sign in:</h4>
-            </div>
-            <div className="card-body">
-              <div className="d-flex justify-content-center">
-                <GoogleLogin
-                  onSuccess={googleSuccess}
-                  onFailure={googleFailure}
-                />
+          <div className="col-4 my-auto ">
+            <div className="card text-center ">
+              <div className="card-header fw-bold">
+                <h4>Sign in:</h4>
+              </div>
+              <div className="card-body">
+                <div className="d-flex justify-content-center">
+                  <GoogleLogin
+                    onSuccess={googleSuccess}
+                    onFailure={googleFailure}
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+      </div>
+    </>
   );
 };
