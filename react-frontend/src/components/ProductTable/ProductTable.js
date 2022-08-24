@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { userLoginStatusSelector } from "../store/authSlice";
+import { userLoginStatusSelector } from "../../store/authSlice";
 
-import { NavBar } from "./NavBar";
+import { NavBar } from "../NavBar/NavBar";
 export const ProductTable = () => {
   const navigate = useNavigate();
   const [dataBaseProducts, setDataBaseProducts] = useState([]);

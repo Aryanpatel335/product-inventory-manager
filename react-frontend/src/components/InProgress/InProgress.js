@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { NavBar } from "./NavBar";
-import { userLoginStatusSelector } from "../store/authSlice";
+import { NavBar } from "../NavBar/NavBar";
+import { userLoginStatusSelector } from "../../store/authSlice";
 import { useSelector } from "react-redux";
 
 export const InProgress = () => {

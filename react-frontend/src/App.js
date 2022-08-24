@@ -1,11 +1,12 @@
 import React from "react";
 import "./App.css";
-import { ProductTable } from "./components/ProductTable";
-
 import { Routes, Route } from "react-router-dom";
 
-import { InProgress } from "./components/InProgress";
-import { LoginPage } from "./components/LoginPage";
+import { InProgress } from "./components/InProgress/InProgress";
+import { LoginPage } from "./components/LoginPage/LoginPage";
+import { AddProduct } from "./components/AddProduct/AddProduct";
+import { ProductTable } from "./components/ProductTable/ProductTable";
+
 function App() {
   return (
     <>
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/inventory" element={<ProductTable />} />
           <Route path="/home" element={<InProgress />} />
+          <Route path="/add" element={<AddProduct />} />
           <Route path="/" element={<LoginPage />} />
 
           {/* <Route exact path="/" element={<Navigate replace to={'/auth'}/>} /> */}

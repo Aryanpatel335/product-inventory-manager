@@ -52,8 +52,8 @@ public class ProductController{
     }
 
 
-    // curl -X DELETE localhost:8080/employees/3
-    //  curl -X PUT localhost:8080/employees/3 -H 'Content-type:application/json' -d '{"name": "Samwise Gamgee", "role": "ring bearer"}'
+
+
     @PutMapping("/products/{id}")
     ResponseEntity<?> updateProductName(@RequestBody Product newProduct,@PathVariable Long id){
         Product updateProduct = productRepository.findById(id) //
@@ -76,9 +76,12 @@ public class ProductController{
         return ResponseEntity.ok(assembler.toModel(updateProduct));
 
     }
+
     @PostMapping("/products")
     ResponseEntity<EntityModel<Product>> newProduct(@RequestBody Product product) {
-
+        Long rowCount = productRepository.rowCount();
+        Long idToAdd = rowCount +1;
+        product.setId(idToAdd);
         product.setStatus("AVAILABLE");
         Product newProduct = productRepository.save(product);
 
@@ -86,6 +89,8 @@ public class ProductController{
                 .created(linkTo(methodOn(ProductController.class).one(newProduct.getId())).toUri()) //
                 .body(assembler.toModel(newProduct));
     }
+
+
     @DeleteMapping("/products/{id}/cancel")
     ResponseEntity<?> cancel(@PathVariable Long id) {
 

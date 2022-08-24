@@ -1,11 +1,10 @@
 import React from "react";
-
-import "../components/LoginPage.css";
 import { GoogleLogin } from "@react-oauth/google";
 import jwt_decode from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { googleSignInUser } from "../store/authSlice";
+import { googleSignInUser } from "../../store/authSlice";
+import "../LoginPage/LoginPage.css";
 
 export const LoginPage = () => {
   const navigate = useNavigate();

@@ -1,8 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { NavLink, useNavigate } from "react-router-dom";
-import "../components/NavBar.css";
-import { logOutUser } from "../store/authSlice";
+import "../NavBar/NavBar.css";
+import { logOutUser } from "../../store/authSlice";
 
 export const NavBar = () => {
   const navigate = useNavigate();
@@ -38,6 +38,11 @@ export const NavBar = () => {
             <li class="nav-item">
               <NavLink to="/inventory" className="btn btn-outline-dark btn-sm">
                 Inventory
+              </NavLink>
+            </li>
+            <li class="nav-item">
+              <NavLink to="/add" className="btn btn-outline-success btn-sm">
+                Add
               </NavLink>
             </li>
           </ul>

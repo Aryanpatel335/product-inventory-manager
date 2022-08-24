@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Table(name = "products")
 class Product {
 
-    private @Id @GeneratedValue Long id;
+    private @Id Long id ;
 
     private String pid;
     private String Productcode;
